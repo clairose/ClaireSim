@@ -1,0 +1,28 @@
+<h1>Claire Sim</h1>
+<h2>{{$ctrl.city}}</h2>
+<div class="houses">
+    <div ng-repeat="v in $ctrl.villagers">
+        <img src="http://www.clker.com/cliparts/n/y/e/0/6/K/simple-cartoon-house-hi.png" width="100px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Stick_Figure.jpg" height="50px"> {{v}}
+    </div>
+    <span>Day: {{$ctrl.day - 1}}</span>
+</div>
+<div class="console">
+    <div ng-repeat="n in $ctrl.villagers">
+        <p>It is time for {{n}} to go to work. Pick a task for {{n}}.</p>
+        <button ng-click="$ctrl.newfood(); food =! food">Harvest food</button></br>
+        <button ng-click="$ctrl.newwater(); water =! water">Collect water</button></br>
+        <button ng-click="$ctrl.newwood(); wood =! wood">Chop wood</button></br>
+        <button ng-click="$ctrl.scavenge(n); scavenge =! scavenge">Scavenge</button></br>
+        <button ng-click="$ctrl.buildhouse()">Build a house (costs 5 wood)</button></br>
+        <button>Build a well (costs 6 wood)</button></br>
+        <p ng-show="food">{{n}} has collected {{$ctrl.fwamt}} pounds of food!</p>
+        <p ng-show="water">{{n}} has collected {{$ctrl.fwamt}} gallons of water!</p>
+        <p ng-show="wood">{{n}} has collected {{$ctrl.fwamt}} wood!</p>
+        <p ng-show="scavenge">{{$ctrl.scavengetext}}</p>
+    </div>
+        <button ng-click="$ctrl.page()">Continue</button>
+</div>
+<p>Food: {{$ctrl.food}}</p>
+<p>Water: {{$ctrl.water}}</p>
+<p>Wood: {{$ctrl.wood}}</p>
