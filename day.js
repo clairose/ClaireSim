@@ -1,6 +1,6 @@
 "use strict";
 {
-    const day = {
+    const daycomp = {
         templateUrl: 'day.html',
         controller: function (gameService) {
             let vm = this;
@@ -15,12 +15,16 @@
             vm.day = gameService.getDay();
             vm.WS = gameService.getWS();
             vm.newDay = gameService.newDay();
+            vm.addWater = function(){
+                vm.water += vm.WS;
+                gameService.setWater(vm.water);
+            }
         }
     }
 
-    day.$inject = ["gameService"];
+    daycomp.$inject = ["gameService"];
 
     angular
         .module("game")
-        .component("day", day)
+        .component("daycomp", daycomp)
 }

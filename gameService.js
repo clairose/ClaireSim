@@ -8,7 +8,7 @@
         const setCity = function (newCity){
             city = newCity;
         }
-        let villagers = ["Tom", "Jones"];
+        let villagers = [{name: "Tom", boo: false}, {name: "Jones", boo: false}];
         const getVillagers = function(){
             return villagers;
         }

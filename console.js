@@ -6,7 +6,7 @@
             let vm = this;
             vm.city = gameService.getCity();
             vm.newVillager = function (input) {
-                gameService.setVillager(input);
+                gameService.setVillager({name: input, boo: false});
             }
             vm.food = gameService.getFood();
             vm.water = gameService.getWater();
