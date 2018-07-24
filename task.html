@@ -16,9 +16,9 @@
         <button ng-click="$ctrl.scavenge(n); scavenge =! scavenge; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Scavenge</button></br>
         <button ng-click="$ctrl.buildhouse(); $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Build a house (costs 5 wood)</button></br>
         <button ng-click="$ctrl.buildwell(); $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Build a well (costs 6 wood)</button></br>
-        <p ng-show="food">{{n.name}} has collected {{$ctrl.fwamt}} pounds of food!</p>
-        <p ng-show="water">{{n.name}} has collected {{$ctrl.fwamt}} gallons of water!</p>
-        <p ng-show="wood">{{n.name}} has collected {{$ctrl.fwamt}} wood!</p>
+        <p ng-show="food">{{n.name}} has collected {{$ctrl.famt}} pounds of food!</p>
+        <p ng-show="water">{{n.name}} has collected {{$ctrl.waamt}} gallons of water!</p>
+        <p ng-show="wood">{{n.name}} has collected {{$ctrl.woamt}} wood!</p>
         <p ng-show="scavenge">{{$ctrl.scavengetext}}</p>
     </div>
         <button ng-click="$ctrl.page()">Continue</button>

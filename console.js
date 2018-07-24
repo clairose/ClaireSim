@@ -7,6 +7,10 @@
             vm.city = gameService.getCity();
             vm.newVillager = function (input) {
                 gameService.setVillager({name: input, boo: false});
+                let villagers = gameService.getVillagers();
+                if (villagers.length = 10) {
+                    gameService.setShow(true);
+                }
             }
             vm.food = gameService.getFood();
             vm.water = gameService.getWater();

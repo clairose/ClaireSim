@@ -7,21 +7,25 @@
             vm.random = function (num, add) {
                 return Math.floor(Math.random() * num) + add;
             }
-            vm.fwamt = vm.random(3, 1);
             vm.samt = vm.random(5, 2);
+            vm.famt = 0;
+            vm.waamt = 0;
+            vm.woamt = 0;
             vm.newfood = function () {
-                vm.food += vm.fwamt;
+                vm.famt = vm.random(3, 1);
+                vm.food += vm.famt;
                 return gameService.setFood(vm.food);
             }
             vm.newwater = function () {
-                vm.water += vm.fwamt
+                vm.waamt = vm.random(3, 1);
+                vm.water += vm.waamt;
                 return gameService.setWater(vm.water);
             }
             vm.newwood = function () {
-                vm.wood += vm.fwamt;
+                vm.woamt = vm.random(3, 1);
+                vm.wood += vm.woamt;
                 return gameService.setWood(vm.wood);
             }
-
             vm.getNum = function (num) {
                 let array = new Array();
                 for (var i = 1; i <= num; i++) {
@@ -40,9 +44,9 @@
             vm.scavenge = function (x) {
                 let i = vm.random(6, 0);
                 if (i < 2) {
-                    vm.death(x);
+                    vm.findfood(x);
                 } else if (i < 4) {
-                    vm.death(x);
+                    vm.nothing(x);
                 } else if (i < 5) {
                     vm.findwood(x);
                 } else {
@@ -52,7 +56,7 @@
             vm.scavengetext = "test";
             vm.findwood = function (x) {
                 vm.scavengetext = `${x.name} found a pile of logs in the forest and was able to collect ${vm.samt} wood!`
-                vm.wood += vm.samt
+                vm.wood += vm.samt;
                 return gameService.setWood(vm.wood);
             }
             vm.nothing = function (x) {
@@ -61,7 +65,7 @@
             }
             vm.findfood = function (x) {
                 vm.scavengetext = `${x.name} encountered a bear and killed it for ${vm.samt} food.`
-                vm.food += vm.samt
+                vm.food += vm.samt;
                 return gameService.setFood(vm.food);
             }
             vm.death = function (x) {
@@ -82,7 +86,7 @@
                 if (vm.wood >= 6) {
                     vm.wood -= 6;
                     gameService.setWood(vm.wood);
-                    gameService.setWS(vm.WS = + 1);
+                    gameService.setWS(vm.WS += 1);
                 } else {
                     alert("You don't have enough wood to buy a well! Keep on chopping!")
                 }

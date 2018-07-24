@@ -28,6 +28,11 @@
                 return array;
             }
             vm.modalText = "GAME OVER";
+            vm.changeText = function(){
+                if (vm.villagers.length > 1){
+                    vm.modalText = "You won!";
+                }
+            }
             vm.reload = function(){
                 $window.location.reload();
             }

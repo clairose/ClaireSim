@@ -1,6 +1,6 @@
 <h1>Claire Sim</h1>
 <h2>{{$ctrl.city}}</h2>
-<div class="houses">
+<div class="houses" ng-init="$ctrl.changeText()">
     <div ng-repeat="v in $ctrl.villagers">
         <img src="http://www.clker.com/cliparts/n/y/e/0/6/K/simple-cartoon-house-hi.png" width="100px">
         <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Stick_Figure.jpg" height="50px"> {{v.name}}

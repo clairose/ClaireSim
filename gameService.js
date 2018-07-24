@@ -3,29 +3,31 @@
     function gameService() {
         let city = "";
         let show = false;
+        let water = 10;
+        let food = 10;
+        let wood = 0;
+        let day = 1;
+        let watersource = 0;
+        let villagers = [{ name: "Tom", boo: false }];
+        let rand = Math.floor(Math.random() * villagers.length);
         const getCity = function () {
             return city;
         }
         const setCity = function (newCity) {
             city = newCity;
         }
-        let villagers = [{ name: "Tom", boo: false }];
-        let rand = Math.floor(Math.random() * villagers.length);
         const getVillagers = function () {
             return villagers;
         }
         const setVillager = function (newVillager) {
             villagers.push(newVillager);
         }
-        let houses = 1;
-        let water = 10;
         const getWater = function () {
             return water;
         }
         const setWater = function (newWater) {
             water = newWater;
         }
-        let food = 10;
         const getFood = function () {
             return food;
         }
@@ -33,18 +35,15 @@
             food = newFood;
             console.log(food);
         }
-        let wood = 0;
         const getWood = function () {
             return wood;
         }
         const setWood = function (newWood) {
             wood = newWood;
         }
-        let day = 1;
         const getDay = function () {
             return day;
         }
-        let watersource = 0;
         const getWS = function () {
             return watersource;
         }
@@ -62,11 +61,13 @@
             if (water < 0) {
                 alert(villagers[rand].name + " has died of thirst.");
                 killVillager(villagers[rand]);
+                water = 0;
             }
             if (food < 0) {
                 alert(villagers[rand].name + " has died of hunger.");
                 console.log(villagers.indexOf(villagers[rand]));
                 killVillager(villagers[rand]);
+                food = 0;
             }
         }
         const killVillager = function (input) {
@@ -79,9 +80,12 @@
                 show = true;
             }
         }
+        const setShow = function (newShow) {
+             show = newShow;
+        }
         const getShow = function () {
             return show;
-        }
+       }
         return {
             city,
             getCity,
@@ -99,6 +103,7 @@
             getWS,
             setWS,
             killVillager,
+            setShow, 
             getShow
         };
     }

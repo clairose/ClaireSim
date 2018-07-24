@@ -15,3 +15,5 @@
 <p>Food: <span ng-repeat="f in $ctrl.getNum($ctrl.food)"><img src="http://www.iconarchive.com/download/i107455/google/noto-emoji-food-drink/32362-ear-of-corn.ico" width="20px"></span></p>
 <p>Water: <span ng-repeat="w in $ctrl.getNum($ctrl.water)"><img src="https://images.vexels.com/media/users/3/145358/isolated/preview/caae118ed1bd555d7a47dcadf5af0bf8-water-drop-falling-illustration-by-vexels.png" width="20px"></span></p>
 <p>Wood: <span ng-repeat="wo in $ctrl.getNum($ctrl.wood)"><img src="https://cdn2.iconfinder.com/data/icons/food-icons-6/200/farm_wood-512.png" width="20px"></span></p>
+<div class="background" ng-show="$ctrl.show">
+<div class="modal" ng-show="$ctrl.show"><h1 class="conditionText">{{$ctrl.modalText}}</h2><img class="modalImg" src="{{$ctrl.resultImg}}"><a href="#!/welcome"><button class="playAgain" ng-click="$ctrl.reload()">Play again?</button></a></div></div>
