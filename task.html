@@ -8,14 +8,14 @@
     <span>Day: {{$ctrl.day - 1}}</span>
 </div>
 <div class="console">
-    <div ng-repeat="n in $ctrl.villagers" ng-init="$ctrl.restBoo(n)">
+    <div ng-repeat="n in $ctrl.villagers" ng-init="$ctrl.resetBoo(n)">
         <p>It is time for {{n.name}} to go to work. Pick a task for {{n.name}}.</p>
-        <button ng-click="$ctrl.newfood(); food =! food; $ctrl.disableButton(n)" ng-disabled="n.boo">Harvest food</button></br>
-        <button ng-click="$ctrl.newwater(); water =! water; $ctrl.disableButton(n)" ng-disabled="n.boo">Collect water</button></br>
-        <button ng-click="$ctrl.newwood(); wood =! wood; $ctrl.disableButton(n)" ng-disabled="n.boo">Chop wood</button></br>
-        <button ng-click="$ctrl.scavenge(n); scavenge =! scavenge; $ctrl.disableButton(n)" ng-disabled="n.boo">Scavenge</button></br>
-        <button ng-click="$ctrl.buildhouse(); $ctrl.disableButton(n)" ng-disabled="n.boo">Build a house (costs 5 wood)</button></br>
-        <button ng-click="$ctrl.buildwell(); $ctrl.disableButton(n)" ng-disabled="n.boo">Build a well (costs 6 wood)</button></br>
+        <button ng-click="$ctrl.newfood(); food =! food; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Harvest food</button></br>
+        <button ng-click="$ctrl.newwater(); water =! water; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Collect water</button></br>
+        <button ng-click="$ctrl.newwood(); wood =! wood; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Chop wood</button></br>
+        <button ng-click="$ctrl.scavenge(n); scavenge =! scavenge; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Scavenge</button></br>
+        <button ng-click="$ctrl.buildhouse(); $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Build a house (costs 5 wood)</button></br>
+        <button ng-click="$ctrl.buildwell(); $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Build a well (costs 6 wood)</button></br>
         <p ng-show="food">{{n.name}} has collected {{$ctrl.fwamt}} pounds of food!</p>
         <p ng-show="water">{{n.name}} has collected {{$ctrl.fwamt}} gallons of water!</p>
         <p ng-show="wood">{{n.name}} has collected {{$ctrl.fwamt}} wood!</p>

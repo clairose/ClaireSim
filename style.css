@@ -9,3 +9,30 @@
     padding: 20px;
     overflow: scroll;
 }
+
+.background{
+    background:rgba(0, 0, 0, 0.6);
+    top: 0%;
+    left:0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 5;
+    position: absolute;
+}
+.modal {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 15px;
+    bottom: 10%;
+    top: 20%;
+    margin: 0 auto;
+    width: 80%;
+    z-index: 10;
+    padding: 0%;
+    background: white no-repeat center;
+}

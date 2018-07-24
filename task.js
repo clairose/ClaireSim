@@ -9,25 +9,25 @@
             }
             vm.fwamt = vm.random(3, 1);
             vm.samt = vm.random(5, 2);
-            vm.newfood = function() {
+            vm.newfood = function () {
                 vm.food += vm.fwamt;
                 return gameService.setFood(vm.food);
             }
-            vm.newwater = function() {
+            vm.newwater = function () {
                 vm.water += vm.fwamt
                 return gameService.setWater(vm.water);
             }
-            vm.newwood = function() {
+            vm.newwood = function () {
                 vm.wood += vm.fwamt;
                 return gameService.setWood(vm.wood);
             }
 
-            vm.getNum = function(num) {
-                let foodarray = new Array();
+            vm.getNum = function (num) {
+                let array = new Array();
                 for (var i = 1; i <= num; i++) {
-                    foodarray.push(i);
-                    }
-                return foodarray;
+                    array.push(i);
+                }
+                return array;
             }
             vm.city = gameService.getCity();
             vm.food = gameService.getFood();
@@ -37,20 +37,25 @@
             vm.day = gameService.getDay();
             vm.WS = gameService.getWS();
             vm.house = true;
-            // n = false;
-            // vm.scavengeopt = [vm.nothing(), vm.nothing(), vm.findfood(), vm.findfood(), "death"];
-            vm.scavenge = function(x){
-                let i = vm.random(5, 0);
-                if (i < 2){
-                    vm.nothing(x);
+            vm.scavenge = function (x) {
+                let i = vm.random(6, 0);
+                if (i < 2) {
+                    vm.death(x);
                 } else if (i < 4) {
-                    vm.findfood(x);
+                    vm.death(x);
+                } else if (i < 5) {
+                    vm.findwood(x);
                 } else {
                     vm.death(x);
                 }
             }
             vm.scavengetext = "test";
-            vm.nothing = function(x) {
+            vm.findwood = function (x) {
+                vm.scavengetext = `${x.name} found a pile of logs in the forest and was able to collect ${vm.samt} wood!`
+                vm.wood += vm.samt
+                return gameService.setWood(vm.wood);
+            }
+            vm.nothing = function (x) {
                 vm.scavengetext = `${x.name} found nothing.`;
                 return vm.scavengetext;
             }
@@ -64,18 +69,26 @@
                 return gameService.killVillager(x);
             }
             vm.buildhouse = function () {
-                vm.house = false;
-                vm.wood -= 5;
-                gameService.setWood(vm.wood);
-                alert("Great! With the addition of a new house, a new villager has moved into town!");
+                if (vm.wood >= 5) {
+                    vm.house = false;
+                    vm.wood -= 5;
+                    gameService.setWood(vm.wood);
+                    alert("Great! With the addition of a new house, a new villager has moved into town!");
+                } else {
+                    alert("You don't have enough wood to buy a house! Keep on chopping!")
+                }
             }
             vm.buildwell = function () {
-                vm.wood -= 6;
-                gameService.setWood(vm.wood);
-                gameService.setWS(vm.WS =+ 1);
+                if (vm.wood >= 6) {
+                    vm.wood -= 6;
+                    gameService.setWood(vm.wood);
+                    gameService.setWS(vm.WS = + 1);
+                } else {
+                    alert("You don't have enough wood to buy a well! Keep on chopping!")
+                }
             }
-            vm.page = function() {
-                if (vm.house === true){
+            vm.page = function () {
+                if (vm.house === true) {
                     $location.path("/daycomp");
                 } else {
                     $location.path("/gconsole");
@@ -84,9 +97,10 @@
             vm.disableButton = function (n) {
                 n.boo = true;
             }
-            vm.restBoo = function(n){
+            vm.resetBoo = function (n) {
                 n.boo = false;
             }
+            
         }
     }
 

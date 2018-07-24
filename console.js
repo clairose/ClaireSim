@@ -12,6 +12,13 @@
             vm.water = gameService.getWater();
             vm.wood = gameService.getWood();
             vm.villagers = gameService.getVillagers();
+            vm.getNum = function(num) {
+                let array = new Array();
+                for (var i = 1; i <= num; i++) {
+                    array.push(i);
+                    }
+                return array;
+        }
         }
     }
 
