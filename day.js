@@ -2,7 +2,7 @@
 {
     const daycomp = {
         templateUrl: 'day.html',
-        controller: function (gameService) {
+        controller: function (gameService, $window) {
             let vm = this;
             vm.city = gameService.getCity();
             vm.newVillager = function (input) {
@@ -27,10 +27,14 @@
                     }
                 return array;
             }
+            vm.modalText = "GAME OVER";
+            vm.reload = function(){
+                $window.location.reload();
+            }
         }
     }
 
-    daycomp.$inject = ["gameService"];
+    daycomp.$inject = ["gameService" , "$window"];
 
     angular
         .module("game")

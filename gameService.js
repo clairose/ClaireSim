@@ -9,7 +9,7 @@
         const setCity = function (newCity) {
             city = newCity;
         }
-        let villagers = [{ name: "Tom", boo: false }, { name: "Jones", boo: false }];
+        let villagers = [{ name: "Tom", boo: false }];
         let rand = Math.floor(Math.random() * villagers.length);
         const getVillagers = function () {
             return villagers;
