@@ -7,8 +7,8 @@
             vm.city = gameService.getCity();
             vm.newVillager = function (input) {
                 gameService.setVillager({name: input, boo: false});
-                let villagers = gameService.getVillagers();
-                if (villagers.length = 10) {
+                let length = gameService.getVillLength();
+                if (length === 10) {
                     gameService.setShow(true);
                 }
             }

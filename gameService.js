@@ -19,6 +19,9 @@
         const getVillagers = function () {
             return villagers;
         }
+        const getVillLength = function () {
+            return villagers.length;
+        }
         const setVillager = function (newVillager) {
             villagers.push(newVillager);
         }
@@ -104,7 +107,8 @@
             setWS,
             killVillager,
             setShow, 
-            getShow
+            getShow,
+            getVillLength
         };
     }
 
