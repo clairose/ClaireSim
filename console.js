@@ -2,7 +2,7 @@
 {
     const gconsole = {
         templateUrl: 'console.html',
-        controller: function (gameService) {
+        controller: function (gameService, $window) {
             let vm = this;
             vm.city = gameService.getCity();
             vm.newVillager = function (input) {
@@ -23,10 +23,13 @@
                     }
                 return array;
         }
+        vm.reload = function(){
+            $window.location.reload();
+        }
         }
     }
 
-    gconsole.$inject = ["gameService"];
+    gconsole.$inject = ["gameService" , "$window"];
 
     angular
         .module("game")

@@ -1,28 +1,61 @@
-<h1>Claire Sim</h1>
-<h2>{{$ctrl.city}}</h2>
-<div class="houses">
-    <div ng-repeat="v in $ctrl.villagers">
-        <img src="http://www.clker.com/cliparts/n/y/e/0/6/K/simple-cartoon-house-hi.png" width="100px">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Stick_Figure.jpg" height="50px"> {{v.name}}
+<div class="page">
+    <h1>Claire Sim</h1>
+    <div class="top_bar">
+    <h2>Welcome to {{$ctrl.city}}!</h2>
+    <div class="day_counter"><p class="narrow">Day: {{$ctrl.day - 1}}</p></div>
     </div>
-    <span>Day: {{$ctrl.day - 1}}</span>
-</div>
-<div class="console">
-    <div ng-repeat="n in $ctrl.villagers" ng-init="$ctrl.resetBoo(n)">
-        <p>It is time for {{n.name}} to go to work. Pick a task for {{n.name}}.</p>
-        <button ng-click="$ctrl.newfood(); food =! food; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Harvest food</button></br>
-        <button ng-click="$ctrl.newwater(); water =! water; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Collect water</button></br>
-        <button ng-click="$ctrl.newwood(); wood =! wood; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Chop wood</button></br>
-        <button ng-click="$ctrl.scavenge(n); scavenge =! scavenge; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Scavenge</button></br>
-        <button ng-click="$ctrl.buildhouse(); $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Build a house (costs 5 wood)</button></br>
-        <button ng-click="$ctrl.buildwell(); $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Build a well (costs 6 wood)</button></br>
-        <p ng-show="food">{{n.name}} has collected {{$ctrl.famt}} pounds of food!</p>
-        <p ng-show="water">{{n.name}} has collected {{$ctrl.waamt}} gallons of water!</p>
-        <p ng-show="wood">{{n.name}} has collected {{$ctrl.woamt}} wood!</p>
-        <p ng-show="scavenge">{{$ctrl.scavengetext}}</p>
+    <div class="console houses">
+            <div class="villager" ng-repeat="v in $ctrl.villagers track by $index">
+                    <div class="house_images">
+                        <img src="http://www.clker.com/cliparts/n/y/e/0/6/K/simple-cartoon-house-hi.png" width="70px">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Stick_Figure.jpg" height="25px">
+                    </div>
+                    <div class="villager_name">
+                        <p class="narrow">{{v.name}}</p>
+                    </div>
+                </div>
     </div>
+    <div class="console main">
+        <div ng-repeat="n in $ctrl.villagers" ng-init="$ctrl.resetBoo(n)">
+            <p>It is time for {{n.name}} to go to work. Pick a task for {{n.name}}.</p>
+            <button ng-click="$ctrl.newfood(); food =! food; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Harvest food</button>
+            </br>
+            <button ng-click="$ctrl.newwater(); water =! water; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Collect water</button>
+            </br>
+            <button ng-click="$ctrl.newwood(); wood =! wood; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Chop wood</button>
+            </br>
+            <button ng-click="$ctrl.scavenge(n); scavenge =! scavenge; $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Scavenge</button>
+            </br>
+            <button ng-click="$ctrl.buildhouse(); $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Build a house (costs 5 wood)</button>
+            </br>
+            <button ng-click="$ctrl.buildwell(); $ctrl.disableButton(n); $ctrl.show()" ng-disabled="n.boo">Build a well (costs 6 wood)</button>
+            </br>
+            <p ng-show="food">{{n.name}} has collected {{$ctrl.famt}} pounds of food!</p>
+            <p ng-show="water">{{n.name}} has collected {{$ctrl.waamt}} gallons of water!</p>
+            <p ng-show="wood">{{n.name}} has collected {{$ctrl.woamt}} wood!</p>
+            <p ng-show="scavenge">{{$ctrl.scavengetext}}</p>
+        </div>
         <button ng-click="$ctrl.page()">Continue</button>
+    </div>
+    <div class="console supplies">
+        <p>Food:
+            <span ng-repeat="f in $ctrl.getNum($ctrl.food)">
+                <img src="http://www.iconarchive.com/download/i107455/google/noto-emoji-food-drink/32362-ear-of-corn.ico" width="20px">
+            </span>
+        </p>
+        <p>Water:
+            <span ng-repeat="w in $ctrl.getNum($ctrl.water)">
+                <img src="https://images.vexels.com/media/users/3/145358/isolated/preview/caae118ed1bd555d7a47dcadf5af0bf8-water-drop-falling-illustration-by-vexels.png"
+                    width="20px">
+            </span>
+        </p>
+        <p>Wood:
+            <span ng-repeat="wo in $ctrl.getNum($ctrl.wood)">
+                <img src="https://cdn2.iconfinder.com/data/icons/food-icons-6/200/farm_wood-512.png" width="20px">
+            </span>
+        </p>
+    </div>
+    <a href="#!/welcome">
+        <button ng-click="$ctrl.reload()">Restart</button>
+    </a>
 </div>
-<p>Food: <span ng-repeat="f in $ctrl.getNum($ctrl.food)"><img src="http://www.iconarchive.com/download/i107455/google/noto-emoji-food-drink/32362-ear-of-corn.ico" width="20px"></span></p>
-<p>Water: <span ng-repeat="w in $ctrl.getNum($ctrl.water)"><img src="https://images.vexels.com/media/users/3/145358/isolated/preview/caae118ed1bd555d7a47dcadf5af0bf8-water-drop-falling-illustration-by-vexels.png" width="20px"></span></p>
-<p>Wood: <span ng-repeat="wo in $ctrl.getNum($ctrl.wood)"><img src="https://cdn2.iconfinder.com/data/icons/food-icons-6/200/farm_wood-512.png" width="20px"></span></p>

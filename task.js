@@ -2,7 +2,7 @@
 {
     const task = {
         templateUrl: 'task.html',
-        controller: function (gameService, $location) {
+        controller: function (gameService, $location, $window) {
             let vm = this;
             vm.random = function (num, add) {
                 return Math.floor(Math.random() * num) + add;
@@ -104,11 +104,13 @@
             vm.resetBoo = function (n) {
                 n.boo = false;
             }
-            
+            vm.reload = function(){
+                $window.location.reload();
+            }
         }
     }
 
-    task.$inject = ["gameService", "$location"];
+    task.$inject = ["gameService", "$location" , "$window"];
 
     angular
         .module("game")

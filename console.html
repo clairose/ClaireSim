@@ -1,19 +1,53 @@
-<h1>Claire Sim</h1>
-<h2>{{$ctrl.city}}</h2>
-<div class="houses">
-    <div ng-repeat="v in $ctrl.villagers track by $index">
-        <img src="http://www.clker.com/cliparts/n/y/e/0/6/K/simple-cartoon-house-hi.png" width="100px">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Stick_Figure.jpg" height="50px"> {{v.name}}
+<div class="page">
+    <h1>Claire Sim</h1>
+    <div class="top_bar">
+        <h2>Welcome to {{$ctrl.city}}!</h2>
+    </div>
+    <div class="console houses">
+        <div class="villager" ng-repeat="v in $ctrl.villagers track by $index">
+            <div class="house_images">
+                <img src="http://www.clker.com/cliparts/n/y/e/0/6/K/simple-cartoon-house-hi.png" width="70px">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Stick_Figure.jpg" height="25px">
+            </div>
+            <div class="villager_name">
+                <p class="narrow">{{v.name}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="console main">Enter a name for your villager:
+        <input type="text" ng-model="$ctrl.villager" />
+        <a href="#!/daycomp">
+            <button ng-click="$ctrl.newVillager($ctrl.villager)">Start</button>
+        </a>
+    </div>
+    <div class="console supplies">
+        <p>Food:
+            <span ng-repeat="f in $ctrl.getNum($ctrl.food)">
+                <img src="http://www.iconarchive.com/download/i107455/google/noto-emoji-food-drink/32362-ear-of-corn.ico" width="20px">
+            </span>
+        </p>
+        <p>Water:
+            <span ng-repeat="w in $ctrl.getNum($ctrl.water)">
+                <img src="https://images.vexels.com/media/users/3/145358/isolated/preview/caae118ed1bd555d7a47dcadf5af0bf8-water-drop-falling-illustration-by-vexels.png"
+                    width="20px">
+            </span>
+        </p>
+        <p>Wood:
+            <span ng-repeat="wo in $ctrl.getNum($ctrl.wood)">
+                <img src="https://cdn2.iconfinder.com/data/icons/food-icons-6/200/farm_wood-512.png" width="20px">
+            </span>
+        </p>
+    </div>
+    <a href="#!/welcome">
+        <button ng-click="$ctrl.reload()">Restart</button>
+    </a>
+    <div class="background" ng-show="$ctrl.show">
+        <div class="modal" ng-show="$ctrl.show">
+            <h1 class="conditionText">{{$ctrl.modalText}}</h2>
+                <img class="modalImg" src="{{$ctrl.resultImg}}">
+                <a href="#!/welcome">
+                    <button class="playAgain" ng-click="$ctrl.reload()">Play again?</button>
+                </a>
+        </div>
     </div>
 </div>
-<div class="console">Enter a name for your villager:
-    <input type="text" ng-model="$ctrl.villager" />
-    <a href="#!/daycomp">
-        <button ng-click="$ctrl.newVillager($ctrl.villager)">Start</button>
-    </a>
-</div>
-<p>Food: <span ng-repeat="f in $ctrl.getNum($ctrl.food)"><img src="http://www.iconarchive.com/download/i107455/google/noto-emoji-food-drink/32362-ear-of-corn.ico" width="20px"></span></p>
-<p>Water: <span ng-repeat="w in $ctrl.getNum($ctrl.water)"><img src="https://images.vexels.com/media/users/3/145358/isolated/preview/caae118ed1bd555d7a47dcadf5af0bf8-water-drop-falling-illustration-by-vexels.png" width="20px"></span></p>
-<p>Wood: <span ng-repeat="wo in $ctrl.getNum($ctrl.wood)"><img src="https://cdn2.iconfinder.com/data/icons/food-icons-6/200/farm_wood-512.png" width="20px"></span></p>
-<div class="background" ng-show="$ctrl.show">
-<div class="modal" ng-show="$ctrl.show"><h1 class="conditionText">{{$ctrl.modalText}}</h2><img class="modalImg" src="{{$ctrl.resultImg}}"><a href="#!/welcome"><button class="playAgain" ng-click="$ctrl.reload()">Play again?</button></a></div></div>
